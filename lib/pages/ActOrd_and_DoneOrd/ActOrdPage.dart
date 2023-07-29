@@ -1,4 +1,3 @@
-import 'package:app/main.dart';
 import 'package:app/pages/ActOrd_and_DoneOrd/Chat.dart';
 import 'package:flutter/material.dart';
 
@@ -45,7 +44,7 @@ class ActOrdState extends State<ActOrd> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 2, horizontal: 40),
-                child: Image.asset("Assets/konsplus.jpg"),
+                child: Image.asset("assets/konsplus.jpg"),
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 2, horizontal: 40),

@@ -3,7 +3,6 @@ import 'package:app/pages/Tech_support.dart';
 import 'package:app/pages/actual_orders.dart';
 import 'package:app/pages/order_page.dart';
 import 'package:flutter/material.dart';
-import 'pages/order_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -58,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: ((context) => OrderPage()),
+                      builder: ((context) => SuggestionsPage()),
                     ),
                   );
                 },

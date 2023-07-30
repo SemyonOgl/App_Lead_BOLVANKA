@@ -1,4 +1,6 @@
 import 'package:app/main.dart';
+import 'package:app/pages/ActOrd_and_DoneOrd/ActOrdPage.dart';
+import 'package:app/pages/elements/button_main.dart';
 import 'package:flutter/material.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
@@ -18,12 +20,12 @@ class BringCoord extends StatefulWidget {
       : mapObjects = [PlacemarkMapObject(
     mapId: const MapObjectId('start_placemark'),
     point: Point(latitude: latit, longitude: longit),
-    icon: PlacemarkIcon.single(PlacemarkIconStyle(image: BitmapDescriptor.fromAssetImage('assets/pngmapicons.png'), scale: 0.1)),
+    icon: PlacemarkIcon.single(PlacemarkIconStyle(image: BitmapDescriptor.fromAssetImage('Assets/pngmapicons.png'), scale: 0.1)),
   ),
     PlacemarkMapObject(
       mapId: const MapObjectId('end_placemark'),
       point: Point(latitude: latittwo, longitude: longittwo),
-      icon: PlacemarkIcon.single(PlacemarkIconStyle(image: BitmapDescriptor.fromAssetImage('assets/pngmapicons.png'), scale: 0.1)),
+      icon: PlacemarkIcon.single(PlacemarkIconStyle(image: BitmapDescriptor.fromAssetImage('Assets/pngmapicons.png'), scale: 0.1)),
     ),
   ];
 
@@ -155,19 +157,7 @@ class _SessionState extends State<_SessionPage> {
                                     ),
                                   ],
                                 ),
-                                Column(
-                                          children: <Widget>[
-                                            ElevatedButton(
-                                                onPressed: () async {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(builder: (context) => HomePage()),
-                                                  );
-                                                },
-                                                child: Text('Вернуться на главный экран')
-                                            )
-                                          ],
-                                        )
+                                ButtonMain(buttonTitle: 'Вернуться на главный экран', onPressed: ((context) => HomePage())),
                               ]
                           )
                       )

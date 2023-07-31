@@ -52,10 +52,9 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
         slivers: [
           const SliverAppBar( //управляемая чёлка приложения
             pinned: true,
-            title: Text('flutter'),
             expandedHeight: 50.0,
             flexibleSpace: FlexibleSpaceBar( //надпись, увеличивающаяся при скролле вниз
-              title: Text('Search'),
+              title: Text('Поиск'),
               centerTitle: true,
             ),
           ),
@@ -82,7 +81,7 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
                           crossAxisAlignment: CrossAxisAlignment
                               .start,
                           children: [
-                            Text('nothing found')
+                            Text('ничего не найдено')
                           ]
                       );
                     }
@@ -106,7 +105,7 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
                       return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text('nothing found')
+                            Text('ничего не найдено')
                           ]
                       );
                     }
@@ -120,7 +119,7 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
                     await Bring();
                   }
                 },
-                child: Text('download'),
+                child: Text('загрузить'),
               ),
             ]
             ),

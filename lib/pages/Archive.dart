@@ -1,3 +1,4 @@
+import 'package:app/pages/elements/beautifull_text.dart';
 import 'package:flutter/material.dart';
 
 class ArchivePage extends StatefulWidget {
@@ -14,6 +15,9 @@ class archivepageState extends State<ArchivePage> {
         title: const Text(
           "Архив",
         ),
+      ),
+      body: Center(
+        child: BeautifullTitle(text: "Тут пока пусто"),
       ),
     );
   }

@@ -1,6 +1,8 @@
 import 'package:app/pages/ActOrd_and_DoneOrd/ActOrdPage.dart';
 import 'package:app/pages/ActOrd_and_DoneOrd/DoneOrd.dart';
+import 'package:app/pages/elements/beautifull_text.dart';
 import 'package:app/pages/elements/button_main.dart';
+import 'package:app/pages/elements/list_of_buttons.dart';
 import 'package:flutter/material.dart';
 
 class ActualPage extends StatefulWidget {
@@ -23,16 +25,13 @@ class ActualPageState extends State<ActualPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              "",
-              style: TextStyle(
-                  fontFamily: "Montserrat",
-                  fontSize: 40,
-                  fontWeight: FontWeight.w700,
-                  color: Color.fromARGB(255, 45, 28, 98)),
+            BeautifullTitle(text: 'сделай выбор'),
+            Flexible(
+              child: ButtonList(buttonsin: [
+                ButtonMain(buttonTitle: 'Текущие заказы', onPressed: ((context) => ActOrd())),
+                ButtonMain(buttonTitle: 'Совершенные заказы', onPressed: ((context) => DonePage())),
+              ]),
             ),
-            ButtonMain(buttonTitle: 'Текущие заказы', onPressed: ((context) => ActOrd())),
-            ButtonMain(buttonTitle: 'Совершенные заказы', onPressed: ((context) => DonePage())),
           ],
         ),
       ),

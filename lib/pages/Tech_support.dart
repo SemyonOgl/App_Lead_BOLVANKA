@@ -1,3 +1,4 @@
+import 'package:app/pages/elements/beautifull_text.dart';
 import 'package:flutter/material.dart';
 
 class TechSuppPage extends StatefulWidget {
@@ -20,14 +21,7 @@ class TechSuppPageState extends State<TechSuppPage> {
         child: const Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              "Всем похуй",
-              style: TextStyle(
-                  fontFamily: "Montserrat",
-                  fontSize: 40,
-                  fontWeight: FontWeight.w700,
-                  color: Color.fromARGB(255, 45, 28, 98)),
-            ),
+             BeautifullTitle(text:"Всем похуй"),
           ],
         ),
       ),

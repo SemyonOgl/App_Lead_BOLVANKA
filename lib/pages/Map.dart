@@ -1,5 +1,4 @@
 import 'package:app/main.dart';
-import 'package:app/pages/ActOrd_and_DoneOrd/ActOrdPage.dart';
 import 'package:app/pages/elements/button_main.dart';
 import 'package:flutter/material.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
@@ -42,24 +41,44 @@ class _Bring_coordState extends State<BringCoord> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          Expanded(child: Container(color: Colors.white,), flex: 1,),
           Expanded(
               child: YandexMap(
                   mapObjects: widget.mapObjects
-              )
+              ),
+            flex: 4,
           ),
-          const SizedBox(height: 20),
-          Expanded(
-              child: SingleChildScrollView(
-                  child: Column(
-                      children: [
-                        ElevatedButton(
-                          onPressed: _requestRoutes,
-                          child: Text('Build route'),
-                        ),
-                      ]
-                  )
-              )
-          )
+          Expanded(child: Container(
+              color: Colors.white,
+              child: Center(child: ElevatedButton(
+                onPressed: _requestRoutes,
+                child: Container(
+                  padding:
+                  const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                    gradient: const LinearGradient(
+                      colors: [
+                        Color.fromARGB(248, 193, 204, 240),
+                        Color.fromARGB(216, 45, 28, 98),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
+                  child: Text(
+                    'Построить маршрут',
+                    style: TextStyle(
+                        fontFamily: "Montserrat",
+                        fontSize: 20,
+                        color: Color.fromARGB(255, 223, 227, 243),
+                        fontWeight: FontWeight.w400),
+                  ),
+                ),
+              ),
+              ),
+          ), flex: 2,
+          ),
         ]
     );
   }
@@ -116,7 +135,7 @@ class _SessionState extends State<_SessionPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text('Driving')),
+        appBar: AppBar(title: Text('Маршрут доставки')),
         body: Container(
             padding: const EdgeInsets.all(8),
             child: Column(

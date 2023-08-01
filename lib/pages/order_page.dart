@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:app/pages/Map.dart';
+import 'package:app/pages/elements/normal_text.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
@@ -61,7 +62,7 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
           SliverList(
             delegate: SliverChildListDelegate([
               SizedBox(height: 20),
-              TextField(
+              if(start == 'Empity') TextField(
                 controller: queryController,
                 decoration: const InputDecoration(
                     hintText: 'Address part'),
@@ -69,7 +70,7 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
               StreamBuilder<void>(
                   stream: streamText,
                   builder: (context, snappShot) {
-                    if (!results.isEmpty) {
+                    if (results != []) {
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment
                             .start,
@@ -87,8 +88,17 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
                     }
                   }
               ),
-              Text(start),
-              TextField(
+              if(start != 'Empity')ElevatedButton(
+                onPressed: () {start = 'Empity';},
+                child: Row(
+                  children: [
+                    Icon(Icons.clear),
+                    NormalText(text: start),
+                  ],
+                )
+              ),
+              SizedBox(height: 40),
+              if(end == 'Empity') TextField(
                 controller: queryControllertwo,
                 decoration: const InputDecoration(hintText: 'Address part'),
               ),
@@ -111,15 +121,43 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
                     }
                   }
               ),
-              Text(end),
-              ElevatedButton(
-                onPressed: () async {
-                  if (start != 'Empity' &&
-                      end != 'Empity') {
+              if(end != 'Empity')ElevatedButton(
+                  onPressed: () {end = 'Empity';},
+                  child: Row(
+                    children: [
+                      Icon(Icons.clear),
+                      NormalText(text: end),
+                    ],
+                  )
+              ),
+              SizedBox(height: 40),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 20),
+                child: InkWell(
+                  onTap: () async {
+                    if (start != 'Empity' && end != 'Empity') {
                     await Bring();
-                  }
-                },
-                child: Text('загрузить'),
+                    }
+                  },
+                splashColor: Theme.of(context).primaryColor,
+                borderRadius: BorderRadius.circular(20),
+                child: Container(
+                  padding:
+                  const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(16),
+                     gradient: const LinearGradient(
+                      colors: [
+                      Color.fromARGB(248, 193, 204, 240),
+                      Color.fromARGB(216, 45, 28, 98),
+                      ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      ),
+                     ),
+                  child: NormalText(text: 'загрузить')
+                ),
+              ),
               ),
             ]
             ),
@@ -165,7 +203,7 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
     final list = <Widget>[];
 
     if (results.isEmpty) {
-      list.add((const Text('Nothing found')));
+      list.add((const Text('ничего не найдено')));
     }
 
     for (var r in results) {
@@ -236,7 +274,7 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
     final list = <Widget>[];
 
     if (resultstwo.isEmpty) {
-      list.add((const Text('Nothing found')));
+      list.add((const Text('ничего не найдено')));
     }
 
     for (var r in resultstwo) {

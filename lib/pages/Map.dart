@@ -1,5 +1,6 @@
 import 'package:app/main.dart';
 import 'package:app/pages/elements/button_main.dart';
+import 'package:app/pages/elements/normal_text.dart';
 import 'package:flutter/material.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
@@ -50,8 +51,7 @@ class _Bring_coordState extends State<BringCoord> {
           ),
           Expanded(child: Container(
               color: Colors.white,
-              child: Center(child: ElevatedButton(
-                onPressed: _requestRoutes,
+              child: Center(
                 child: Container(
                   padding:
                   const EdgeInsets.symmetric(vertical: 20, horizontal: 40),
@@ -66,14 +66,9 @@ class _Bring_coordState extends State<BringCoord> {
                       end: Alignment.bottomRight,
                     ),
                   ),
-                  child: Text(
-                    'Построить маршрут',
-                    style: TextStyle(
-                        fontFamily: "Montserrat",
-                        fontSize: 20,
-                        color: Color.fromARGB(255, 223, 227, 243),
-                        fontWeight: FontWeight.w400),
-                  ),
+                  child: TextButton(
+                    onPressed: _requestRoutes,
+                    child: NormalText(text: 'Построить маршрут'),
                 ),
               ),
               ),
@@ -191,15 +186,15 @@ class _SessionState extends State<_SessionPage> {
     final list = <Widget>[];
 
     if (results.isEmpty) {
-      list.add((const Text('Nothing found')));
+      list.add((const NormalText(text: 'Ничего не найдено')));
     }
 
     for (var r in results) {
       list.add(Container(height: 20));
 
-      list.add(Text('Время поездки: ${r.routes![0].metadata.weight.timeWithTraffic.text}'));
+      list.add(NormalText(text:'Время поездки: ${r.routes![0].metadata.weight.timeWithTraffic.text}'));
 
-      list.add(Text('Дистанция: ${r.routes![0].metadata.weight.distance.text}'));
+      list.add(NormalText(text:'Дистанция: ${r.routes![0].metadata.weight.distance.text}'));
 
       list.add(Container(height: 20));
     }
@@ -229,6 +224,4 @@ class _SessionState extends State<_SessionPage> {
     });
   }
 }
-
 //Кнопка вернуться, разобраться
-//Карту привязать

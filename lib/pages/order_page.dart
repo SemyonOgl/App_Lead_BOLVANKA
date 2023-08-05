@@ -31,6 +31,7 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
   List<SuggestSessionResult> resultstwo = [];
   String start = 'Empity';
   String end = 'Empity';
+  String city = 'Москва';
 
   @override
   void initState() {
@@ -62,6 +63,51 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
           SliverList(
             delegate: SliverChildListDelegate([
               SizedBox(height: 20),
+              ExpansionTile(
+                title: NormalText(text: 'Выберите город'),
+                children: [
+                  Builder(
+                    builder: (BuildContext context) {
+                      return Column(
+                        children: [
+                          ListTile(
+                            title: NormalText(text: 'Москва'),
+                            onTap: () {
+                              setState(() {
+                                city = 'Москва';
+                                return ExpansionTileController.of(context).collapse();
+                              });
+                            },
+                          ), //элемент списка
+                          ListTile(
+                            title: NormalText(text: 'Санкт-Петербург'),
+                            onTap: () {
+                              setState(() {
+                                city = 'Санкт-Петербург';
+                                return ExpansionTileController.of(context).collapse();
+                              });
+                            },
+                          ),
+                          ListTile(
+                            title: NormalText(text: 'Между городами'),
+                            onTap: () {
+                              setState(() {
+                                city = '';
+                                return ExpansionTileController.of(context).collapse();
+                              });
+                            },
+                          ),
+                      ]
+                      );
+                }
+                )
+                ],
+              ),
+              SizedBox(height: 40),
+              NormalText(text: 'Выбранный город: ' + city),
+              SizedBox(height: 40),
+              NormalText(text: 'Выберите улицы'),
+              SizedBox(height: 40),
               if(start == 'Empity') TextField(
                 controller: queryController,
                 decoration: const InputDecoration(
@@ -214,7 +260,7 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
                 start = item.title;
                 queryController.text = '';
               });
-            }, child: Text('Item $i: ${item.title}'))
+            }, child: Text('Вариант $i: ${item.title}'))
         );
       });
     }
@@ -285,7 +331,7 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
                 end = item.title;
                 queryControllertwo.text = '';
               });
-            }, child: Text('Item $i: ${item.title}'))
+            }, child: Text('Вариант $i: ${item.title}'))
         );
       });
     }
@@ -332,7 +378,7 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
 
   _getAddressFromLatLng() async {
     try {
-      List<Location> placemarks = await locationFromAddress(start);
+      List<Location> placemarks = await locationFromAddress(city + start);
 
       Location place = placemarks[0];
 
@@ -346,7 +392,7 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
   }
   _getAddressFromLatLngtwo() async {
     try {
-      List<Location> placemarks = await locationFromAddress(end);
+      List<Location> placemarks = await locationFromAddress(city + end);
 
       Location place = placemarks[0];
 

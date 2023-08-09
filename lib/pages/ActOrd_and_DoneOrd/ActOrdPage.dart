@@ -1,5 +1,10 @@
+import 'package:app/main.dart';
 import 'package:app/pages/ActOrd_and_DoneOrd/Chat.dart';
+import 'package:app/pages/elements/beautifull_text.dart';
+import 'package:app/pages/elements/button_active.dart';
 import 'package:app/pages/elements/button_main.dart';
+import 'package:app/pages/elements/normal_text.dart';
+import 'package:app/pages/variable/variable_main.dart';
 import 'package:flutter/material.dart';
 
 class ActOrd extends StatefulWidget {
@@ -8,6 +13,9 @@ class ActOrd extends StatefulWidget {
 }
 
 class ActOrdState extends State<ActOrd> {
+
+  String dis = distasnce;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,43 +30,23 @@ class ActOrdState extends State<ActOrd> {
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              const Text(
-                "",
-                style: TextStyle(
-                    fontFamily: "Montserrat",
-                    fontSize: 0,
-                    fontWeight: FontWeight.w700,
-                    color: Color.fromARGB(255, 45, 28, 98)),
-              ),
-              const SizedBox(height: 0),
-              const Padding(
+              if(prise != '0')Padding(
                 padding: EdgeInsets.symmetric(vertical: 2, horizontal: 40),
-                child: Text(
-                  "Заказ №1488",
-                  style: TextStyle(
-                      fontFamily: "Montserrat",
-                      fontSize: 40,
-                      fontWeight: FontWeight.w700,
-                      color: Color.fromARGB(255, 45, 28, 98)),
-                ),
+                child: NormalText(text: 'У вас новый заказ!'),
               ),
-              Padding(
+              if(prise != '0')Padding(
                 padding:
                     const EdgeInsets.symmetric(vertical: 2, horizontal: 40),
                 child: Image.asset("Assets/konsplus.jpg"),
               ),
-              const Padding(
+              if(prise != '0')Padding(
                 padding: EdgeInsets.symmetric(vertical: 2, horizontal: 40),
-                child: Text(
-                  "Ваш курьер будет через 10 минут!",
-                  style: TextStyle(
-                      fontFamily: "Montserrat",
-                      fontSize: 40,
-                      fontWeight: FontWeight.w700,
-                      color: Color.fromARGB(255, 45, 28, 98)),
-                ),
+                child: NormalText(text: 'Дистанция для вашего заказа ${distasnce}, приблизительное время доставки ${time}. Цена вашего заказа ${prise}'),
               ),
-              ButtonMain(buttonTitle: 'Связаться с курьером', onPressed: ((context) => ChatPage())),
+              if(prise != '0')ButtonActive(buttonTitle: 'Принять заказ', onPressed: ((context) => HomePage())),
+              if(prise != '0')SizedBox(height: 15,),
+              if(prise != '0')ButtonMain(buttonTitle: 'Связаться с курьером', onPressed: ((context) => ChatPage())),
+              if(prise == '0')Center(child: BeautifullTitle(text: 'Пока пусто'),)
             ]
         ),
       ),

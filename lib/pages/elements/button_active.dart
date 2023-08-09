@@ -1,22 +1,27 @@
+import 'package:app/pages/sql_database/main_database.dart';
+import 'package:app/pages/variable/variable_main.dart';
 import 'package:flutter/material.dart';
 
-class ButtonMain extends StatefulWidget {
+class ButtonActive extends StatefulWidget {
   final String buttonTitle;
   final onPressed;
-  const ButtonMain({required this.buttonTitle, required this.onPressed});
+  const ButtonActive({required this.buttonTitle, required this.onPressed});
 
   @override
-  State<ButtonMain> createState() => _ButtonMainState();
+  State<ButtonActive> createState() => _ButtonActiveState();
 }
 
-class _ButtonMainState extends State<ButtonMain> {
+class _ButtonActiveState extends State<ButtonActive> {
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 20),
       child: InkWell(
-        onTap: () {
-          Navigator.push(context, MaterialPageRoute(builder: widget.onPressed,),);
+        onTap: () async {
+          await DBProvidertwo.db.newOrder(distasnce, time, prise);
+          prise = '0';
+          await Navigator.push(context, MaterialPageRoute(builder: widget.onPressed,));
         },
         splashColor: Theme
             .of(context)
@@ -49,5 +54,3 @@ class _ButtonMainState extends State<ButtonMain> {
     );
   }
 }
-
-

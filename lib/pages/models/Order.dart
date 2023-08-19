@@ -15,25 +15,29 @@ class Order {
   String distance;
   String time;
   String prise;
+  int active;
 
   Order({
     required this.id,
     required this.distance,
     required this.time,
     required this.prise,
+    required this.active
   });
 
   factory Order.fromMap(Map<String, dynamic> json) => new Order(
     id: json["id"],
     distance: json["distance"],
     time: json["time"],
-    prise: json["prise"]
+    prise: json["prise"],
+    active: json["active"]
   );
 
   Map<String, dynamic> toMap() => {
     "id": id,
     "distance": distance,
     "time": time,
-    "prise": prise
+    "prise": prise,
+    "active": active
   };
 }

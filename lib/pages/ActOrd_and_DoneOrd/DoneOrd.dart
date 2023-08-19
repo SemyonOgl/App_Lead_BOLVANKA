@@ -1,7 +1,6 @@
 import 'package:app/pages/elements/beautifull_text.dart';
 import 'package:app/pages/models/Order.dart';
 import 'package:app/pages/sql_database/main_database.dart';
-import 'package:app/pages/variable/variable_main.dart';
 import 'package:flutter/material.dart';
 
 class DonePage extends StatefulWidget {
@@ -19,7 +18,7 @@ class DonePageState extends State<DonePage> {
         title: const Text("Совершенные заказы"),
       ),
       body: FutureBuilder<List<Order>>(
-        future: DBProvidertwo.db.getAllOrders(),
+        future: DBProvider.db.getAllOrders(),
         builder: (BuildContext context, AsyncSnapshot<List<Order>> snapshot) {
           if (snapshot.hasData) {
             return ListView.builder(

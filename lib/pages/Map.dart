@@ -1,9 +1,7 @@
 import 'package:app/main.dart';
 import 'package:app/pages/elements/button_main.dart';
 import 'package:app/pages/elements/normal_text.dart';
-import 'package:app/pages/models/Order.dart';
 import 'package:app/pages/sql_database/main_database.dart';
-import 'package:app/pages/variable/variable_main.dart';
 import 'package:flutter/material.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
@@ -226,9 +224,11 @@ class _SessionState extends State<_SessionPage> {
         strokeColor: Colors.red,
         strokeWidth: 2,
       ));
-      distasnce = results[0].routes![0].metadata.weight.distance.text;
-      time = results[0].routes![0].metadata.weight.timeWithTraffic.text;
-      prise = '1000 рублей';
+      await DBProvider.db.newOrder(
+          results[0].routes![0].metadata.weight.distance.text,
+          results[0].routes![0].metadata.weight.timeWithTraffic.text,
+          '1000 рублей'
+      );
     });
   }
 }

@@ -4,7 +4,7 @@ import 'package:app/pages/actual_orders.dart';
 import 'package:app/pages/elements/beautifull_text.dart';
 import 'package:app/pages/elements/button_exit.dart';
 import 'package:app/pages/elements/list_of_buttons.dart';
-import 'package:app/pages/order_page.dart';
+import 'package:app/pages/inspectors/inspector_is_actual_order.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/elements/button_main.dart';
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 55),
             Flexible(
               child: ButtonList(buttonsin: [
-                  ButtonMain(buttonTitle: 'Заказать', onPressed: ((context) => SuggestionsPage())),
+                  ButtonMain(buttonTitle: 'Заказать', onPressed: ((context) => IsActualOrder())),
                   ButtonMain(buttonTitle: 'Актуальное', onPressed: ((context) => ActualPage())),
                   ButtonMain(buttonTitle: 'Архив', onPressed: ((context) => ArchivePage())),
                   SizedBox(height: 100,),

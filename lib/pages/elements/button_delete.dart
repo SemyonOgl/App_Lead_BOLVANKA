@@ -2,16 +2,16 @@ import 'package:app/pages/models/Order.dart';
 import 'package:app/pages/sql_database/main_database.dart';
 import 'package:flutter/material.dart';
 
-class ButtonActive extends StatefulWidget {
+class ButtonDelete extends StatefulWidget {
   final String buttonTitle;
   final onPressed;
-  const ButtonActive({required this.buttonTitle, required this.onPressed});
+  const ButtonDelete({required this.buttonTitle, required this.onPressed});
 
   @override
-  State<ButtonActive> createState() => _ButtonActiveState();
+  State<ButtonDelete> createState() => _ButtonDeleteState();
 }
 
-class _ButtonActiveState extends State<ButtonActive> {
+class _ButtonDeleteState extends State<ButtonDelete> {
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,7 @@ class _ButtonActiveState extends State<ButtonActive> {
       child: InkWell(
         onTap: () async {
           Order res = await DBProvider.db.getLastOrder();
-          res.active = 0;
-          await DBProvider.db.updateOrder(res);
+          await DBProvider.db.deleteOrder(res.id);
           await Navigator.push(context, MaterialPageRoute(builder: widget.onPressed));
         },
         splashColor: Theme

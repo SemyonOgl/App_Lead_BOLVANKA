@@ -106,7 +106,7 @@ class _SuggestionsExampleState extends State<_SuggestionsExample> {
               SizedBox(height: 40),
               NormalText(text: 'Выбранный город: ' + city),
               SizedBox(height: 40),
-              NormalText(text: 'Выберите улицы'),
+              if(city != '')NormalText(text: 'Выберите улицы'),
               SizedBox(height: 40),
               if(start == 'Empity') TextField(
                 controller: queryController,

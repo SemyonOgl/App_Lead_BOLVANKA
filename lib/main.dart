@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "navigation",
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
@@ -37,9 +38,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text(
-          "Меню",
-        ),
+        title: const Text("Меню"),
+        automaticallyImplyLeading: false,
       ),
       body: Container(
         alignment: Alignment.center,

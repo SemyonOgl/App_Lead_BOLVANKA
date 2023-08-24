@@ -4,6 +4,7 @@ import 'package:app/pages/actual_orders.dart';
 import 'package:app/pages/elements/beautifull_text.dart';
 import 'package:app/pages/elements/button_exit.dart';
 import 'package:app/pages/elements/list_of_buttons.dart';
+import 'package:app/pages/inspectors/inspector_api_download.dart';
 import 'package:app/pages/inspectors/inspector_is_actual_order.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      home: HomePage(),
+      home: ApiDownload(),
     );
   }
 }

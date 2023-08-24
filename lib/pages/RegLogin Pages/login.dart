@@ -29,7 +29,9 @@ class _LoginPageState extends State<LoginPage> {
                     /*decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(50.0)),*/
+
                     child: Image.asset('assets/konsplus.jpg')),
+
               ),
             ),
             Padding(

@@ -30,7 +30,7 @@ class _ClientAccRegState extends State<ClientAccReg> {
                         borderRadius: BorderRadius.circular(50.0)),*/
 
 
-                    child: Image.asset('assets/konsplus.jpg')),
+                    child: Image.asset('Assets/konsplus.jpg')),
 
               ),
             ),

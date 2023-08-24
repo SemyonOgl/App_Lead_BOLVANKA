@@ -27,8 +27,9 @@ class _ApiDownloadState extends State<ApiDownload> {
   }
 
   void init() async {
-    User? deviceId = await _getId();
     loaging = true;
+    User? deviceId = await _getId();
+    print(deviceId?.uid.toString());
     await sendData(deviceId);
 
   }
@@ -54,7 +55,7 @@ class _ApiDownloadState extends State<ApiDownload> {
     var deviceInfo = DeviceInfoPlugin();
     if (Platform.isIOS) { // import 'dart:io'
       var iosDeviceInfo = await deviceInfo.iosInfo;
-      return User(uid: 'iosDeviceInfo.identifierForVendor'); // unique ID on iOS
+      return User(uid: iosDeviceInfo.identifierForVendor!); // unique ID on iOS
     } else if(Platform.isAndroid) {
       var androidDeviceInfo = await deviceInfo.androidInfo;
       return User(uid: androidDeviceInfo.id); // unique ID on Android

@@ -1,7 +1,5 @@
 import 'package:app/main.dart';
 import 'package:flutter/material.dart';
-import 'package:app/pages/RegLogin Pages/RegPage.dart';
-
 
 class EmployeeAccReg extends StatefulWidget {
   @override
@@ -28,9 +26,7 @@ class _EmployeeAccRegState extends State<EmployeeAccReg> {
                     /*decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(50.0)),*/
-
-                    child: Image.asset('assets/konsplus.jpg')),
-
+                    child: Image.asset('Assets/konsplus.jpg')),
               ),
             ),
             Padding(

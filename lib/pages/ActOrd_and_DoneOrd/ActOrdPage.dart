@@ -19,43 +19,54 @@ class ActOrdState extends State<ActOrd> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text("Текущие заказы"),
-      ),
-      body: FutureBuilder<Order>(
-        future: DBProvider.db.getLastOrder(),
-        builder: (BuildContext context, AsyncSnapshot<Order> snapshot) {
-          if (snapshot.data?.active == 1) {
-            return Container(
-              alignment: Alignment.center,
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 2, horizontal: 40),
-                      child: NormalText(text: 'У вас новый заказ!'),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 40),
-                      child: Image.asset("Assets/konsplus.jpg"),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.symmetric(vertical: 2, horizontal: 40),
-                      child: NormalText(text: 'Дистанция для вашего заказа ${snapshot.data?.distance}, приблизительное время доставки ${snapshot.data?.time}. Цена вашего заказа ${snapshot.data?.prise}'),
-                    ),
-                    ButtonActive(buttonTitle: 'Принять заказ', onPressed: ((context) => HomePage())),
-                    ButtonDelete(buttonTitle: 'Отказаться от заказа', onPressed: ((context) => HomePage())),
-                    SizedBox(height: 15,),
-                    ButtonMain(buttonTitle: 'Связаться с курьером', onPressed: ((context) => ChatPage())),
-                  ]
-                )
-              );
-          } else {
-            return Center(child: BeautifullTitle(text: 'Пока пусто'));
-          }
-        },
-      ),
+      body: CustomScrollView(
+        slivers:[
+          const SliverAppBar( //управляемая чёлка приложения
+            pinned: true,
+            expandedHeight: 50.0,
+            flexibleSpace: FlexibleSpaceBar( //надпись, увеличивающаяся при скролле вниз
+              title: Text('Текущие заказы'),
+              centerTitle: true,
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate([
+              FutureBuilder<Order>(
+              future: DBProvider.db.getLastOrder(),
+              builder: (BuildContext context, AsyncSnapshot<Order> snapshot) {
+                if (snapshot.data?.active == 1) {
+                  return Container(
+                    alignment: Alignment.center,
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 2, horizontal: 40),
+                            child: NormalText(text: 'У вас новый заказ!'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 2, horizontal: 40),
+                            child: Image.asset("Assets/konsplus.jpg"),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 2, horizontal: 40),
+                            child: NormalText(text: 'Дистанция для вашего заказа ${snapshot.data?.distance}, приблизительное время доставки ${snapshot.data?.time}. Цена вашего заказа ${snapshot.data?.prise}'),
+                          ),
+                          ButtonActive(buttonTitle: 'Принять заказ', onPressed: ((context) => HomePage())),
+                          ButtonDelete(buttonTitle: 'Отказаться от заказа', onPressed: ((context) => HomePage())),
+                          SizedBox(height: 15,),
+                          ButtonMain(buttonTitle: 'Связаться с курьером', onPressed: ((context) => ChatPage())),
+                        ]
+                      )
+                    );
+                } else {
+                  return Center(child: BeautifullTitle(text: 'Пока пусто'));
+                }
+              },
+        ),
+            ]),
+          ),
+      ]),
     );
   }
 }

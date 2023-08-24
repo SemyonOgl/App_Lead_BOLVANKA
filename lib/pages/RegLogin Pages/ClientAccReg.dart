@@ -26,7 +26,11 @@ class _ClientAccRegState extends State<ClientAccReg> {
                     /*decoration: BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.circular(50.0)),*/
+
+
                     child: Image.asset('Assets/konsplus.jpg')),
+
+
               ),
             ),
             Padding(

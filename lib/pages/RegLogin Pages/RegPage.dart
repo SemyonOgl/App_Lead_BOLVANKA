@@ -37,7 +37,10 @@ class _RegPagState extends State<RegPag> {
                       width: 400,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
+
+
                           image: AssetImage('Assets/neruss.jpg'),
+
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -73,7 +76,9 @@ class _RegPagState extends State<RegPag> {
                         width: 400,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
+
                             image: AssetImage('Assets/russ.jpg'),
+
                             fit: BoxFit.cover,
                           ),
                         ),

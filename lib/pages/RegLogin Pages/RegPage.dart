@@ -1,6 +1,8 @@
 import 'package:app/pages/RegLogin Pages/ClientAccReg.dart';
 import 'package:app/pages/RegLogin Pages/EmployeeAccReg.dart';
 import 'package:flutter/material.dart';
+import 'package:app/main.dart';
+
 
 class RegPag extends StatefulWidget {
   @override
@@ -17,7 +19,13 @@ class _RegPagState extends State<RegPag> {
         ),
         body: Container(
           alignment: Alignment.center, //Прилипает к AppBar, исправить
+
           child: PageView(
+
+            textDirection: TextDirection.ltr,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+
             children: <Widget>[
               Column(children: <Widget>[
                 Material(
@@ -37,7 +45,10 @@ class _RegPagState extends State<RegPag> {
                       width: 400,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('Assets/neruss.jpg'),
+
+
+                          image: AssetImage('assets/neruss.jpg'),
+
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -73,7 +84,9 @@ class _RegPagState extends State<RegPag> {
                         width: 400,
                         decoration: const BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage('Assets/russ.jpg'),
+
+                            image: AssetImage('assets/russ.jpg'),
+
                             fit: BoxFit.cover,
                           ),
                         ),
